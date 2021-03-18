@@ -1,0 +1,58 @@
+import './Login.css'
+import userLogo from '../assets/userLogo-2.png'
+
+export default function SignUp(props) {
+
+
+    /* Find a button over Event. The target is an id of button. We don't use a name or value because they can be changed f.e. translator  */
+    let submitHandler = (e) => {
+        e.preventDefault();
+
+        let data = {};
+        let firstName = e.target[0].value;
+        let secondName = e.target[1].value;
+        data.name = `${firstName} ${secondName}`
+        data.email = e.target[2].value;
+        data.pass = e.target[3].value;
+
+        let url = "https://auth404.herokuapp.com/api/auth/register";
+        let options = {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }
+
+        console.log(data);
+        console.log(e.target);
+
+        fetch(url, options).then(result => result.json().then(output => console.log(output)))
+    }
+
+    return (
+        <div className="wrapper fadeInDown">
+            <div id="formContent">
+                {/* Tabs Titles */}
+                <h2 onClick={props.toggle} className="inactive underlineHover"> Sign In </h2>
+                <h2 className="active">Sign Up </h2>
+                {/* Icon */}
+                <div className="fadeIn first ">
+                    <img className="userLogo" src={userLogo} id="icon" alt="User Icon" />
+                </div>
+                {/* Login Form */}
+                <form onSubmit={submitHandler}>
+                    <input type="text" id="first name " className="fadeIn second" name="login" placeholder="first name" />
+                    <input type="text" id="last name" className="fadeIn second" name="login" placeholder="last name" />
+                    <input type="text" id="login" className="fadeIn second" name="login" placeholder="login" />
+                    <input type="text" id="password" className="fadeIn third" name="login" placeholder="password" />
+                    <input type="submit" className="fadeIn fourth" defaultValue="Sign Up" />
+                </form>
+                {/* Remind Passowrd */}
+                <div id="formFooter">
+                    {/* <a className="underlineHover" href="#">Forgot Password?</a> */}
+                </div>
+            </div>
+        </div>
+    );
+}
