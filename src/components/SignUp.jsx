@@ -29,7 +29,7 @@ export default function SignUp(props) {
         }
 
         fetch(url, options).then(result => result.json().then(output => {
-            console.log(output);
+            // console.log(output);
             let status = output.status;
             if (status == 'failed') {
                 setMsg('')

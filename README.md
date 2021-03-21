@@ -5,6 +5,8 @@
 
 ## To-DO
 
+- Change input passwor to * and add function which will be show it.
+
 ## Questions
 
 - Why useEffect don't fire if variable value is changing?

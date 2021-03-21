@@ -17,7 +17,7 @@ export default function Login(props) {
         data.email = e.target[0].value;
         data.pass = e.target[1].value;
 
-        console.log(e.target);
+        //console.log(e.target);
         let url = "https://auth404.herokuapp.com/api/auth/login";
         let options = {
             method: "POST",

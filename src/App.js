@@ -20,8 +20,8 @@ function App() {
   /* get a status of request check it and if it was success rerender a page  */
   function statusChecker(status) {
     checker = status;
-    console.log('status', status);
-    console.log('checker', checker);
+    // console.log('status', status);
+    // console.log('checker', checker);
 
     if (checker == 'success') {
       fetch(url, option).then(result => {
