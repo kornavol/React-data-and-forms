@@ -1,7 +1,11 @@
 import './Login.css'
 import userLogo from '../assets/userLogo-2.png'
 
+import {useState} from 'react';
+
 export default function SignUp(props) {
+
+    const [msg, setMsg] = useState('')
 
 
     /* Find a button over Event. The target is an id of button. We don't use a name or value because they can be changed f.e. translator  */
@@ -24,14 +28,28 @@ export default function SignUp(props) {
             body: JSON.stringify(data)
         }
 
-        console.log(data);
-        console.log(e.target);
+        fetch(url, options).then(result => result.json().then(output => {
+            console.log(output);
+            let status = output.status;
+            if (status == 'failed') {
+                setMsg('')
+                /* assign element instead just massage_, because wanna reveal text with animation  */
+                setMsg(<h4 className="fadeIn color-yellow">{'this email is already in use. Please try another'}</h4>)
+        
+            } else if (status == 'success') {
+                setMsg('')
+                /* assign element instead just massage_, because wanna reveal text with animation  */
+                setMsg(<h4 className="fadeIn color-white">{output.message}</h4>)
+            }
+            /* Delay to show a customer a message  */
+            setTimeout(() => props.statusChecker(status), 4000);
 
-        fetch(url, options).then(result => result.json().then(output => console.log(output)))
+        }))
     }
 
     return (
         <div className="wrapper fadeInDown">
+            {msg}
             <div id="formContent">
                 {/* Tabs Titles */}
                 <h2 onClick={props.toggle} className="inactive underlineHover"> Sign In </h2>

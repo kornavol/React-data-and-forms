@@ -6,14 +6,22 @@ import { useState } from 'react';
 export default function Authorization(props) {
 
     let condition = 'SignUp';
-    const [state, setstate] = useState(<SignIn toggle={toggle} />)
+    const [state, setstate] = useState(
+    <SignIn 
+    toggle={toggle}
+    statusChecker = {props.statusChecker} />)
 
     function toggle() {
         if (condition == 'SignUp') {
-            setstate(<SignUp toggle={toggle} />)
+            setstate(<SignUp 
+                toggle={toggle}
+                statusChecker = {props.statusChecker}
+                 />)
             condition = 'SignIn'
         } else if (condition == 'SignIn') {
-            setstate(<SignIn toggle={toggle} />)
+            setstate(<SignIn 
+                toggle={toggle}
+                statusChecker = {props.statusChecker} />)
             condition = 'SignUp'
 
         }
