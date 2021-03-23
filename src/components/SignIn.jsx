@@ -44,7 +44,7 @@ export default function Login(props) {
     const [inputTypePasswd, setInputTypePasswd] = useState(['password', 'show', 'show-btn-show'])
 
     function showPass(e) {
-        e.preventDefault;
+        e.preventDefault();
 
         if (e.target.id === 'show-btn-show') {
             setInputTypePasswd(['text', 'hide', 'show-btn-hide']);
