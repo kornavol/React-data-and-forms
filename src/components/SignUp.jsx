@@ -62,8 +62,8 @@ export default function SignUp(props) {
                 <form onSubmit={submitHandler}>
                     <input type="text" id="first name " className="fadeIn second" name="login" placeholder="first name" />
                     <input type="text" id="last name" className="fadeIn second" name="login" placeholder="last name" />
-                    <input type="text" id="login" className="fadeIn second" name="login" placeholder="login" />
-                    <input type="text" id="password" className="fadeIn third" name="login" placeholder="password" />
+                    <input type="email" id="login" className="fadeIn second" name="login" placeholder="login" />
+                    <input type="password" id="password" className="fadeIn third" name="login" placeholder="password" />
                     <input type="submit" className="fadeIn fourth" defaultValue="Sign Up" />
                 </form>
                 {/* Remind Passowrd */}

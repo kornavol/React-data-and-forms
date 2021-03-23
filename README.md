@@ -5,7 +5,7 @@
 
 ## To-DO
 
-- Change input passwor to * and add function which will be show it.
+- Make a switcher which wil be toggle pass <-> text. In this case we can show or hide a password.
 
 ## Questions
 

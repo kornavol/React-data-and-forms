@@ -58,8 +58,8 @@ export default function Login(props) {
                 <form onSubmit={submitHandler}>
                     {/*  type -= email screw up my outlook */}
                     {/* <input type="email" id="login" className="fadeIn second" name="login" placeholder="login" /> */}
-                    <input type="text" id="login" className="fadeIn second" name="login" placeholder="login" />
-                    <input type="text" id="password" className="fadeIn third" name="password" placeholder="password" />
+                    <input type="email" id="login" className="fadeIn second" name="login" placeholder="login" />
+                    <input type="password" id="password" className="fadeIn third" name="password" placeholder="password" />
                     <input id="LogIn" type="submit" className="fadeIn fourth" defaultValue="Log In" />
                 </form>
                 {/* Remind Password */}
