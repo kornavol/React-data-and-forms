@@ -41,6 +41,20 @@ export default function Login(props) {
         }));       
     }
 
+    const [inputTypePasswd, setInputTypePasswd] = useState(['password', 'show', 'show-btn-show'])
+
+    function showPass(e) {
+        e.preventDefault;
+
+        if (e.target.id === 'show-btn-show') {
+            setInputTypePasswd(['text', 'hide', 'show-btn-hide']);
+
+        } else if (e.target.id === 'show-btn-hide') {
+            setInputTypePasswd(['password', 'show', 'show-btn-show']);
+        }
+
+    }
+
     return (
         <div className="wrapper fadeInDown">
             {/* <h4 className="fadeIn fourth">{msg}</h4> */}
@@ -58,9 +72,12 @@ export default function Login(props) {
                 <form onSubmit={submitHandler}>
                     {/*  type -= email screw up my outlook */}
                     {/* <input type="email" id="login" className="fadeIn second" name="login" placeholder="login" /> */}
-                    <input type="email" id="login" className="fadeIn second" name="login" placeholder="login" />
-                    <input type="password" id="password" className="fadeIn third" name="password" placeholder="password" />
-                    <input id="LogIn" type="submit" className="fadeIn fourth" defaultValue="Log In" />
+                    <input type="email" id="login" className="fadeIn first" name="login" placeholder="login" />
+                    <div className ="password">
+                        <input type={inputTypePasswd[0]} id="password" className="short-psw fadeIn second" name="login" placeholder="password" />
+                        <input type="button" id={inputTypePasswd[2]} className="fadeIn second" onClick={showPass} name="test" value={inputTypePasswd[1]} />
+                    </div>
+                    <input id="LogIn" type="submit" className="fadeIn third" defaultValue="Log In" />
                 </form>
                 {/* Remind Password */}
                 <div id="formFooter">

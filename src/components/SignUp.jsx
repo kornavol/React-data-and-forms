@@ -1,16 +1,17 @@
 import './Login.css'
 import userLogo from '../assets/userLogo-2.png'
 
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function SignUp(props) {
+    
 
     const [msg, setMsg] = useState('')
-
 
     /* Find a button over Event. The target is an id of button. We don't use a name or value because they can be changed f.e. translator  */
     let submitHandler = (e) => {
         e.preventDefault();
+        console.log('submitHandler is running');
 
         let data = {};
         let firstName = e.target[0].value;
@@ -35,7 +36,7 @@ export default function SignUp(props) {
                 setMsg('')
                 /* assign element instead just massage_, because wanna reveal text with animation  */
                 setMsg(<h4 className="fadeIn color-yellow">{'this email is already in use. Please try another'}</h4>)
-        
+
             } else if (status == 'success') {
                 setMsg('')
                 /* assign element instead just massage_, because wanna reveal text with animation  */
@@ -46,6 +47,22 @@ export default function SignUp(props) {
 
         }))
     }
+
+
+    const [inputTypePasswd, setInputTypePasswd] = useState(['password', 'show', 'show-btn-show'])
+
+    function showPass(e) {
+        e.preventDefault;
+
+        if (e.target.id === 'show-btn-show') {
+            setInputTypePasswd(['text', 'hide', 'show-btn-hide']);
+
+        } else if (e.target.id === 'show-btn-hide') {
+            setInputTypePasswd(['password', 'show', 'show-btn-show']);
+        }
+
+    }
+
 
     return (
         <div className="wrapper fadeInDown">
@@ -63,10 +80,13 @@ export default function SignUp(props) {
                     <input type="text" id="first name " className="fadeIn second" name="login" placeholder="first name" />
                     <input type="text" id="last name" className="fadeIn second" name="login" placeholder="last name" />
                     <input type="email" id="login" className="fadeIn second" name="login" placeholder="login" />
-                    <input type="password" id="password" className="fadeIn third" name="login" placeholder="password" />
+                    <div className ="password">
+                        <input type={inputTypePasswd[0]} id="password" className="short-psw fadeIn third" name="login" placeholder="password" />
+                        <input type="button" id={inputTypePasswd[2]} className="fadeIn third" onClick={showPass} name="test" value={inputTypePasswd[1]} />
+                    </div>
                     <input type="submit" className="fadeIn fourth" defaultValue="Sign Up" />
                 </form>
-                {/* Remind Passowrd */}
+                {/* Remind Password */}
                 <div id="formFooter">
                     {/* <a className="underlineHover" href="#">Forgot Password?</a> */}
                 </div>

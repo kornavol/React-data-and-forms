@@ -5,7 +5,6 @@
 
 ## To-DO
 
-- Make a switcher which wil be toggle pass <-> text. In this case we can show or hide a password.
 
 ## Questions
 
